@@ -1,0 +1,10 @@
+<div class="border p-5">
+    <%= form_with model: @article do |f| %>
+    
+        <div class="form-group">
+            <%= f.label :title, "What is the Title of your Post?" %>
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+    
+    <% end %>
+</div>
