@@ -16,6 +16,24 @@
  $secondary: rgb(237,111,55);
  $info: rgb(47,138,206);
 
+ .article-title {
+    font-size: 1.4em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+ }
+ .article-date {
+    font-size: .9em;
+    text-transform: uppercase;
+    color: #747577;
+    text-align: center;
+ }
+ .article-body {
+    font-size: .95em;
+    color: #747577;
+    text-align: center;
+ }
+
  
  @import "bootstrap";
 

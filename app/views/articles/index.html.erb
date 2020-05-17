@@ -2,5 +2,20 @@
 <p>This is the platform where everyone is going to be happy. People who are going to travel around Japan can get authentic and lively information about anything about Japan, which are posted by Japanese people who learn English.</p>
 
 
+<div class="row mb-4">
+    <% @articles.each do |article| %>
+        <div class="card p-4 mb-4 shadow-sm">
+            <h2 class="article-title"><%= article.title %></h2>
+            <p class="article-date"><%= article.created_at.strftime("%B %d, %Y") %></p>
+            <p class="article-body"><%= article.body.truncate(120) %></p>
+            <div class="btn-groups mx-auto">
+                <%= link_to "Edit this post", edit_article_path(article), class: 'pr-2' %> | 
+                <%= link_to "Delete this post", article_path(article), method: :delete, data: { confirm: 'Are you sure?'}, class: 'pl-2'  %>
+            </div>
+        </div>
+    <% end %>
+</div>
 
-<%= link_to "Post a Column", new_article_path, class: 'btn btn-outline-primary' %>
+<div class="text-center">
+    <%= link_to "Post a Column", new_article_path, class: 'btn btn-outline-primary' %>
+</div>
