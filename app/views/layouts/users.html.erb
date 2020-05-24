@@ -14,14 +14,11 @@
       <%= link_to "Dive into Miyazaki", root_path, class: 'topbar-logo' %>
       <ul class="topbar-items">
         <li class="topbar-item"></li>
+        <li class="topbar-item"><a href="">About</a></li>
         <li class="topbar-item"><a href="">Categories</a></li>
         <li class="topbar-item"><a href="">Members</a></li>
-        <% if user_signed_in? %>
-          <li class="topbar-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="topbar-item"><%= link_to "Sign up", new_user_registration_path %></li>
-          <li class="topbar-item"><%= link_to "Log in", new_user_session_path %></li>
-        <% end %>
+        <li class="topbar-item"><%= link_to "Sign up", new_user_registration_path %></li>
+        <li class="topbar-item"><a href="">Login</a></li>
       </ul>
     </div>
     <header class="mb-5 d-flex justify-content-center flex-column align-items-center">
@@ -35,13 +32,8 @@
       <%= yield %>
     </main>
 
-    <footer>
-      <p class="link-logo">
-        <a href="https://www.pref.miyazaki.lg.jp/">
-          <%= image_tag 'miyazaki-logo.jpg' %>
-        </a>
-      </p>
-      <p class="copyright">Copyright © 2020 diveintomiyazaki.com</p>
+    <footer class="bg-primary text-center text-white py-3">
+      <small>Copyright © 2020 diveintomiyazaki.com</small>
     </footer>
   </body>
 </html>

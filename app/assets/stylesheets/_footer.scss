@@ -1,0 +1,25 @@
+@import "common/color";
+@import "common/font";
+@import "media_queries";
+
+footer {
+    background-color: $green;
+    padding: 30px;
+    .link-logo {
+        width: 150px;
+        margin: 0 auto 20px;
+        a {
+            display: block;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .copyright {
+        font-size: .8em;
+        color: $white;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+}

@@ -1,3 +1,80 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// articles#index
+.card-article-title {
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    a {
+        color: $orange;
+    }
+    @include pc {
+        font-size: 1.8em;
+    }
+    @include sp {
+        font-size: 1.4em;
+    }
+ }
+ .card-article-date {
+    font-size: .9em;
+    text-transform: uppercase;
+    color: $black;
+    text-align: center;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    @include sp {
+        font-size: .7em;
+    }
+ }
+ .card-article-body {
+    font-size: .95em;
+    color: $black;
+    text-align: center;
+}
+.thumb {
+    object-fit: cover;
+}
+
+ 
+
+// articles#show
+ .text-head {
+    color: $blue;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+.text-body {
+    text-align: justify;
+    font-size: .95em;
+}
+
+.article-info {
+    border-bottom: 3px double rgba(0,0,0,.1);
+    list-style-type: none;
+    padding: 15px 0;
+    margin: 0 0 50px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+.article-info li {
+    color: #888888;
+    display: inline-block;
+    margin: 0;
+    font-size: .9em;
+}
+.article-info li:first-child::after {
+    content: "・";
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+.article-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.article-content {
+    text-align: justify;
+    font-size: .9em;
+    line-height: 1.8;
+    font-weight: 300;
+}

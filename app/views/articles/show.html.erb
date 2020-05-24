@@ -1,2 +1,15 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<article>
+    <h1 class="text-head"><%= @article.title %></h1>
+    <ul class="article-info">
+        <li><%= @article.created_at.strftime("%B %d, %Y") %></li>
+        <li>Category</li>
+    </ul>
+
+    <% if @article.image? %>
+        <%= image_tag @article.image.url, class: "article-image" %>
+    <% end %>
+
+    <p class="article-content"><%= @article.body %></p>
+</article>
+
+
