@@ -11,8 +11,13 @@ Rails.application.routes.draw do
 
   get 'welcome', to: 'welcome#index'
 
-  resources :articles do
+  resources :articles
+
+  resources :users, only: [:index, :show] do
+    resources :articles do
+    end
   end
+
 
   authenticated :user do
     root :to => 'articles#index', :as => "user_authenticated_root"

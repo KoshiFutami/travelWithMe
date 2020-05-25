@@ -48,6 +48,14 @@
     text-align: justify;
     font-size: .95em;
 }
+.article-author {
+    text-align: right;
+    font-size: 1em;
+    a {
+        color: $black;
+        text-transform: none;
+    }
+}
 
 .article-info {
     border-bottom: 3px double rgba(0,0,0,.1);

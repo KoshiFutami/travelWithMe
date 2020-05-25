@@ -13,9 +13,9 @@
     <div class="topbar d-none d-md-flex">
       <%= link_to "Dive into Miyazaki", root_path, class: 'topbar-logo' %>
       <ul class="topbar-items">
-        <li class="topbar-item"></li>
+        <li class="topbar-item"><%= link_to "All Posts", articles_path %></li>
         <li class="topbar-item"><a href="">Categories</a></li>
-        <li class="topbar-item"><a href="">Members</a></li>
+        <li class="topbar-item"><%= link_to "All Members", users_path %></li>
         <% if user_signed_in? %>
           <li class="topbar-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% else %>

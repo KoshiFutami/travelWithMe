@@ -1,0 +1,27 @@
+// ボタン　buttons btn
+.btn-groups {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-blue {
+    background: $blue;
+    color: $white;
+    &:hover {
+    color: $white;
+    }
+}
+
+.btn-yellow {
+    background: $yellow;
+    color: $white;
+    &:hover {
+        color: $white;
+    }
+}
+
