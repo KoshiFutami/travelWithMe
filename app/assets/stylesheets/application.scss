@@ -15,21 +15,9 @@
  body {
     padding: 0;
     margin: 0;
+    background-color: #ECE9E2;
  }
- 
 
- 
-
-
- body {
-    background-color: #f7f7f7;
-    background-image: url(https://www.travelettes.net/wp-content/uploads/2015/08/pattern.jpg);
-    // background-position: left top;
-    // background-size: auto;
-    // background-repeat: repeat;
-    // background-attachment: scroll;
-
- } 
 
  a {
     color: $green;
@@ -38,7 +26,7 @@
  a:hover {
      text-decoration: none;
      color: $green;
-     opacity: .5;
+     opacity: .7;
  }
  p {
     font-family: 'M PLUS Rounded 1c', sans-serif;

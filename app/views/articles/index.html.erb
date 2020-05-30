@@ -8,15 +8,11 @@
             <% end %>
             <div class="p-3">
                 <h2 class="card-article-title"><%= link_to article.title, article_path(article)%></h2>
+                <p class="card-article-user"><a href="users/<%= article.user_id %>"><%= article.user.username %></a></p>
                 <p class="card-article-date"><%= article.created_at.strftime("%B %d, %Y") %></p>
                 <p class="card-article-body"><%= article.body.truncate(120) %></p>
+                <p class="card-article-comment"><%= pluralize(article.comments.count, "comment") %></p>
             </div>
-            <% if user_signed_in? && article.user_id == current_user.id %>
-            <div class="btn-groups mx-auto mb-3">
-                <%= link_to "Edit this post", edit_article_path(article), class: 'pr-2' %> | 
-                <%= link_to "Delete this post", article_path(article), method: :delete, data: { confirm: 'Are you sure?'}, class: 'pl-2'  %>
-            </div>
-            <% end %>
         </div>
     <% end %>
 </div>
