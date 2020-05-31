@@ -4,6 +4,7 @@
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +15,7 @@
       <%= link_to "Dive into Miyazaki", root_path, class: 'topbar-logo' %>
       <ul class="topbar-items">
         <li class="topbar-item"><%= link_to "All Posts", articles_path %></li>
-        <li class="topbar-item"><a href="">Categories</a></li>
+        <li class="topbar-item"><%= link_to "All Tags", tags_path %></li>
         <li class="topbar-item"><%= link_to "All Members", users_path %></li>
         <% if user_signed_in? %>
           <li class="topbar-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>

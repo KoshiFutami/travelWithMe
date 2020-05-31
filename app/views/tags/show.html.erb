@@ -1,0 +1,21 @@
+
+
+<h3><%= @tag.name %></h3>
+
+<% @tag.articles.each do |article| %>
+        <div class="card col-lg-5 col-sm-10 mb-4 shadow-sm mx-auto p-0">
+            <% if article.image? %>
+                <%= image_tag article.image.thum.url, class:"thumb" %>
+            <% end %>
+            <div class="p-3">
+                <h2 class="card-article-title"><%= link_to article.title, article_path(article)%></h2>
+                <p class="card-article-user"><a href="users/<%= article.user_id %>"><%= article.user.username %></a></p>
+                <p class="card-article-date"><%= article.created_at.strftime("%B %d, %Y") %></p>
+                <p class="card-article-body"><%= article.body.truncate(120) %></p>
+                <p class="card-article-comment"><%= pluralize(article.comments.count, "comment") %></p>
+            </div>
+        </div>
+<% end %>
+
+
+<%= link_to 'Back to All Tags', tags_path %>

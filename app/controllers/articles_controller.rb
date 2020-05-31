@@ -4,11 +4,13 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order('created_at DESC')
-  end
 
+  end
+  
   def show
     @comments = @article.comments
     @comment = Comment.new
+    @favorite = current_user.favorites.find_by(article_id: @article.id)
   end
 
   def edit
@@ -24,6 +26,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = current_user.articles.build
+    @categories = Category.all
   end
 
   def create
@@ -49,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :image)
+    params.require(:article).permit(:title, :body, :image, tag_ids: [])
   end
 
 end

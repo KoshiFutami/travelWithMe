@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
+  get 'tags/index'
+  get 'tags/show'
   get 'categories/index'
   get 'categories/show'
   get 'comments/create'
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy] 
   end
 
   resources :users, only: [:index, :show] do
@@ -24,8 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index, :show] do
-  end
+  resources :tags, only: [:index, :show] 
 
   authenticated :user do
     root :to => 'articles#index', :as => "user_authenticated_root"

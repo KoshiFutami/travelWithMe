@@ -8,8 +8,11 @@
     <h1 class="text-head"><%= @article.title %></h1>
     <ul class="article-info">
         <li><%= @article.created_at.strftime("%B %d, %Y") %></li>
-        <li>Category</li>
+        <% @article.tags.each do |tag| %>
+        <li><%= link_to tag.name, tag_path(tag.id) %></li>
+        <% end %>
     </ul>
+
 
     <% if @article.image? %>
         <%= image_tag @article.image.url, class: "article-image" %>
@@ -21,6 +24,16 @@
 
 
 </article>
+
+<% if user_signed_in? %>
+    <% if @article.favorited_by?(current_user) %>
+        <p class="card-article-favorite">❤︎：<%= link_to @article.favorites.count, article_favorites_path(@article.id), method: :delete  %></p>
+    <% else %>
+        <p class="card-article-favorite">❤︎：<%= link_to @article.favorites.count, article_favorites_path(@article.id), method: :post %></p>
+    <% end %>
+<% else %>
+    <p class="card-article-favorite">❤︎：<%= @article.favorites.count %></p>
+<% end %>
 
 <%# コメント %>
 

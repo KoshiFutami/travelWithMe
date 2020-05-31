@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_005924) do
+ActiveRecord::Schema.define(version: 2020_05_31_071256) do
+
+  create_table "article_tags", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_tags_on_article_id"
+    t.index ["tag_id"], name: "index_article_tags_on_tag_id"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
@@ -19,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_05_30_005924) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "user_id"
-    t.integer "category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,6 +42,22 @@ ActiveRecord::Schema.define(version: 2020_05_30_005924) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_favorites_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_favorites_on_user_id_and_article_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

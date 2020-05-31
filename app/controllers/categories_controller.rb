@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @articles = Article.categories.find(category_id: @category.id)
+
   end
 
   private
