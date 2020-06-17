@@ -1,8 +1,8 @@
-$pc: 960px;
-$sp: 560px;
+$tab: 768px;
+$sp: 576px;
 
-@mixin pc {
-    @media (max-width: ($pc)) {
+@mixin tab {
+    @media (max-width: ($tab)) {
       @content;
     }
   }
@@ -12,20 +12,3 @@ $sp: 560px;
     }
   }
 
-// @mixin max-screen($break-point) {
-//   @media screen and (max-width: $break-point) {
-//     @content;
-//   }
-// }
-
-// @mixin min-screen($break-point) {
-//   @media screen and (min-width: $break-point) {
-//     @content;
-//   }
-// }
-
-// @mixin screen($break-point-min, $break-point-max) {
-//   @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
-//     @content;
-//   }
-// }

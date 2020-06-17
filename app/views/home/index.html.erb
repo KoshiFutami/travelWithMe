@@ -2,7 +2,7 @@
 
 <div class="row mb-4 w-100 mx-auto">
     <% @articles.each do |article| %>
-        <div class="card card-article col-lg-5 col-sm-10 mb-4 shadow-sm mx-auto p-0 <%= "japan" if article.user.nationality == "Japan" %>">
+        <div class="card col-lg-5 col-sm-10 mb-4 shadow-sm mx-auto p-0">
             <% if article.image? %>
                 <%= image_tag article.image.thum.url, class:"thumb" %>
             <% end %>
@@ -27,8 +27,7 @@
 </div>
 
 
-<% if user_signed_in? %>
+
 <div class="text-center">
     <%= link_to "Post a Column", new_article_path, class: 'btn btn-blue' %>
 </div>
-<% end %>

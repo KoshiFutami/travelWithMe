@@ -4,28 +4,33 @@
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-
+    <script src="https://kit.fontawesome.com/db7b38bbd8.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="topbar d-none d-md-flex">
-      <%= link_to "Dive into Miyazaki", root_path, class: 'topbar-logo' %>
-      <ul class="topbar-items">
-        <li class="topbar-item"><%= link_to "All Posts", articles_path %></li>
-        <li class="topbar-item"><%= link_to "All Tags", tags_path %></li>
-        <li class="topbar-item"><%= link_to "All Members", users_path %></li>
-        <% if user_signed_in? %>
-          <li class="topbar-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-          <li class="topbar-item"><%= link_to "My Page", user_path(current_user) %></li>
-        <% else %>
-          <li class="topbar-item"><%= link_to "Sign up", new_user_registration_path %></li>
-          <li class="topbar-item"><%= link_to "Log in", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div>
+    <nav class="navbar navbar-light navbar-expand-md">
+      <%= link_to "Dive into Miyazaki", root_path, class: 'navbar-logo' %>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item"><%= link_to "All Posts", articles_path %></li>
+          <li class="nav-item"><%= link_to "All Tags", tags_path %></li>
+          <li class="nav-item"><%= link_to "All Members", users_path %></li>
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li class="nav-item"><%= link_to "My Page", user_path(current_user) %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "Sign up", new_user_registration_path %></li>
+            <li class="nav-item"><%= link_to "Log in", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
     <header class="mb-5 d-flex justify-content-center flex-column align-items-center">
         <div class="text-center">
           <%= link_to "Dive into Miyazaki", root_path, class: "text-white cover-logo" %>
@@ -45,5 +50,9 @@
       </p>
       <p class="copyright">Copyright © 2020 diveintomiyazaki.com</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   </body>
 </html>

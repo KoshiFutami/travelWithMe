@@ -8,11 +8,11 @@
 @import './header';
 @import 'articles';
 
-
-
-
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
  body {
+    font-size: 95%;
     padding: 0;
     margin: 0;
     background-color: #ECE9E2;
@@ -21,17 +21,47 @@
 
  a {
     color: $green;
-    text-transform: uppercase;
+    // text-transform: uppercase;
  }
  a:hover {
      text-decoration: none;
      color: $green;
-     opacity: .7;
+     opacity: 0.7;
  }
  p {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: 300;
  }
+
+ .hidden_file {
+     display: none;
+ }
+.prev-image {
+    width: 100%;
+}
+
+.icon-email,
+.icon-password {
+    position: relative;
+
+    &:before {
+        position: absolute;
+    }
+}
+.icon-email:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a4";
+    position: absolute;
+    left: .6em;
+    font-weight: 400;
+}
+.icon-password:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f023";
+    position: absolute;
+    left: .6em;
+    font-weight: 400;
+}
 
 //  common
 .topbar {
@@ -43,8 +73,8 @@
     justify-content: space-between;
     padding: 0 10px;
 }
-.topbar-logo {
-    font-size: 35px;
+.navbar-logo {
+    font-size: 2rem;
     font-family: 'Indie Flower', cursive;
 }
 .topbar-items {
@@ -68,13 +98,16 @@ header {
 
  .cover-logo {
     font-family: 'Indie Flower', cursive;
-    font-size: 60px;
+    font-size: 4rem;
     margin: 0 auto;
     text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    @include sp {
+        font-size: 3rem;
+    }
  }
  .cover-desc {
      color: #fff;
-     font-size: 25px;
+     font-size: 1.5rem;
      font-family: 'M PLUS Rounded 1c', sans-serif;
      text-shadow: 1px 1px 2px rgba(0,0,0,.5);
  }
@@ -84,7 +117,29 @@ header {
 
 
  .page-title {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-family: 'Indie Flower', cursive;
     text-align: center;
+ }
+
+ .navbar-nav {
+     flex-direction: row;
+        justify-content: space-between;
+    .nav-item {
+        margin-right: 15px;
+        @include tab {
+            margin-right: 0;
+        }
+    }
+ }
+ .navbar-expand-md {
+     .navbar-collapse {
+         justify-content: flex-end;
+     }
+ }
+ .navbar-toggler {
+     border-color: rgba(70,154,42,.5)!important;
+     .navbar-toggler-icon {
+         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(70,154,42,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+     }
  }

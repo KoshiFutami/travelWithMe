@@ -7,15 +7,14 @@ Rails.application.routes.draw do
   get 'categories/show'
   get 'comments/create'
   get 'comments/destroy'
-  devise_for :users, :controllers => {
+  devise_for :users,
+  path: '',
+  path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
+  :controllers => {
     :registrations => "users/registrations",
     :sessions => "users/sessions",
   }
 
-  devise_scope :users do
-    get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy"
-  end
 
   get 'welcome', to: 'welcome#index'
 
@@ -24,16 +23,17 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy] 
   end
 
-  resources :users, only: [:index, :show] do
-    resources :articles do
-    end
+  resources :users, only: [:index, :show, :edit] do
+    resources :articles
+    resources :favorites, only: :index
   end
 
+
   resources :tags, only: [:index, :show] 
+  get 'home', to: 'articles#index'
 
   authenticated :user do
     root :to => 'articles#index', :as => "user_authenticated_root"
   end
-  root to: 'welcome#index'
-  
+  root 'welcome#index'
 end
