@@ -67,3 +67,4 @@ gem 'mini_magick'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
+gem 'pry-byebug', group: :development
