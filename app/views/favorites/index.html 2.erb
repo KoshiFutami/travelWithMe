@@ -1,0 +1,40 @@
+<h1><%= @user.username %></h1>
+<p><%= @user.nationality %></p>
+
+<div class="tablist">
+    <ul>
+        <li><%= link_to "All Posts", user_path(@user.id) %></li>
+        <li><%= link_to "Favorite Posts", user_favorites_path(@user.id) %></li>
+    </ul>
+</div>
+
+<h2 class="page-title">Your Favorite Posts</h2>
+<% if @favorites.exists?%>
+    <div class="row mb-4 w-100 mx-auto">
+        <% @favorites.each do |article| %>
+            <div class="card col-lg-5 col-sm-10 mb-4 shadow-sm mx-auto p-0">
+                <% if article.image? %>
+                    <%= image_tag article.image.thum.url, class:"thumb" %>
+                <% end %>
+                <div class="p-3">
+                    <h2 class="card-article-title"><%= link_to article.title, article_path(article)%></h2>
+                    <p class="card-article-user"><%= link_to article.user.username, user_path(article.user_id) %></a></p>
+                    <p class="card-article-date"><%= article.created_at.strftime("%B %d, %Y") %></p>
+                    <p class="card-article-body"><%= article.body.truncate(120) %></p>
+                    <% if user_signed_in? %>
+                        <% if article.favorited_by?(current_user) %>
+                            <p class="card-article-favorite"><i class="fas fa-heart"></i> <%= link_to article.favorites.count, article_favorites_path(article.id), method: :delete  %></p>
+                        <% else %>
+                            <p class="card-article-favorite"><i class="fas fa-heart"></i> <%= link_to article.favorites.count, article_favorites_path(article.id), method: :post %></p>
+                        <% end %>
+                    <% else %>
+                        <p class="card-article-favorite"><i class="fas fa-heart"></i> <%= article.favorites.count %></p>
+                    <% end %>
+                    <p class="card-article-comment"><i class="fas fa-comment-dots"></i> <%= article.comments.count %></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <p>No Favorite Posts</p>
+<% end %>
