@@ -1,4 +1,4 @@
-<div class="border p-5">
+<div class="border p-5 bg-white">
     <%= form_with model: @article do |f| %>
     
         <div class="form-group">
@@ -12,28 +12,20 @@
         </div>
 
         <div class="form-group">
-            <p>Choose Tags!</p>
-            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                <%= tag.label do %>
-                    <%= tag.check_box %>
-                    <%= tag.text %>
+            <%= f.label :tag, "Choose tags!" %>
+            <div>
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                    <%= tag.label do %>
+                        <%= tag.check_box %>
+                        <%= tag.text %>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </div>
         </div>
 
-        <%# <div class="form-group"> %>
-            <%#= f.label :image, "Upload the picture you want to show the readers!" %><br>
-            <%#= image_tag @article.image.thum.url if @article.image? %><br>
-            <%#= f.file_field :image, class: "mt-2" %>
-        <%# </div> %>
-
-
         <div class="form-group">
-            <%#= f.label :image, "Upload the picture you want to show the readers!" %><br>
-            <%#= image_tag @article.image.thum.url if @article.image? %><br>
-            <%#= f.file_field :image, class: "mt-2" %>
             
-            <%= f.label :image,  "Upload the picture you want to show the readers!", class:'image_label' do %>
+            <%= f.label :image,  "Choose a picture!", class:'image_label' do %>
                 <div class="prev-contents">
                     <% if @article.image? %>
                         <div class="prev-content">
